@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 4's Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark text-light bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Store Management</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Example 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Example 2</a>
+                    </li>
+                </ul>
+
+                <span class="navbar-text">
+                    welcome to ... <i class="fas fa-sign-out-alt"></i>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="mt-5" style="border: 0.1rem solid rgb(0, 123, 235); border-top: 6px solid rgb(0, 123, 235)">
+            <div class="card">
+                <div class="card-header">
+                    <div class="">
+                        <p class="h3 d-inline">Product</p>
+                        <p class="text-muted d-inline ml-2" style="font-size: 1.6rem;">list</p>
+                        <button class="btn btn-primary float-right d-inline" data-toggle="modal"
+                            data-target="#exampleModal"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead style="background-color:rgb(184, 218, 255)">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ProductName</th>
+                                <th scope="col">Barcode</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Disabled</th>
+                                <th scope="col">PriceIn</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products; index as i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{product.ProductName}}</td>
+                                <td>{{product.Barcode}}</td>
+                                <td>{{product.Price}}</td>
+                                <td>{{product.Discription}}</td>
+                                <td>{{product.Rating}}</td>
+                                <td>{{product.Disabled}}</td>
+                                <td>{{product.PriceIn}}</td>
+                                <td>{{product.Stock}}</td>
+                                <td>
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <i class="fas fa-trash-alt text-danger"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">ProductName</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.ProductName"
+                                    [ngModelOptions]="{standalone: true}" class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">ProductTypeId</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.IDProductType"
+                                    [ngModelOptions]="{standalone: true}" class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Prodvider Id</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.IDProvider"
+                                    [ngModelOptions]="{standalone: true}" class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Price</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.Price" [ngModelOptions]="{standalone: true}"
+                                    class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Barcode</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.Barcode" [ngModelOptions]="{standalone: true}"
+                                    class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Description</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.Discription"
+                                    [ngModelOptions]="{standalone: true}" class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Rating</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.Rating" [ngModelOptions]="{standalone: true}"
+                                    class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Disabled</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="checkbox" [(ngModel)]="product.Disabled"
+                                    [ngModelOptions]="{standalone: true}" class=" form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">PriceIn</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.PriceIn" [ngModelOptions]="{standalone: true}"
+                                    class=" form-control justify-content-betwwen">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label class="justify-content-betwwen">Stock</label>
+                            </div>
+
+                            <div class="col-9">
+                                <input type="text" [(ngModel)]="product.Stock" [ngModelOptions]="{standalone: true}"
+                                    class="form-control justify-content-betwwen">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="createProduct()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</html>
